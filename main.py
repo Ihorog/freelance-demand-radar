@@ -12,10 +12,8 @@ if not BOT_TOKEN or not GROQ_KEY:
     print("[!] Error: Environment variables missing.")
     sys.exit(1)
 
-# Ініціалізація бота
 bot = telebot.TeleBot(BOT_TOKEN)
 
-# НАЙВАЖЛИВІШИЙ РЯДОК: Очищаємо конфлікти до запуску потоків і логіки
 try:
     print("[+] Жорстке скидання вебхуків Telegram...")
     bot.remove_webhook()
