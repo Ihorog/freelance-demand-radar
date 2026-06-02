@@ -12,7 +12,15 @@ if not BOT_TOKEN or not GROQ_KEY:
     print("[!] Error: Environment variables missing.")
     sys.exit(1)
 
+# Ініціалізація бота
 bot = telebot.TeleBot(BOT_TOKEN)
+
+# НАЙВАЖЛИВІШИЙ РЯДОК: Очищаємо конфлікти до запуску потоків і логіки
+try:
+    print("[+] Жорстке скидання вебхуків Telegram...")
+    bot.remove_webhook()
+except Exception as e:
+    print(f"[!] Попередження при скиданні вебхука: {str(e)}")
 
 def process_with_groq(text_input):
     client = Groq(api_key=GROQ_KEY)
@@ -86,5 +94,4 @@ def handle_text_chaos(message):
 
 if __name__ == "__main__":
     print("[+] Cloud Bot is pooling...")
-    bot.remove_webhook()
     bot.infinity_polling()
