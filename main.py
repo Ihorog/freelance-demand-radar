@@ -86,4 +86,5 @@ def handle_text_chaos(message):
 
 if __name__ == "__main__":
     print("[+] Cloud Bot is pooling...")
+    bot.remove_webhook()
     bot.infinity_polling()
